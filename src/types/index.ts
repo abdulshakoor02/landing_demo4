@@ -31,9 +31,24 @@ export interface Testimonial {
 export interface Country {
   id: number;
   name: string;
-  benefit: string;
-  image: string;
+  tagline: string; // Short compelling tagline
+  description: string; // Detailed description
+  heroImage: string; // Background image for the card
+  flagIcon: string;
+  statistics: {
+    processingTime: string;
+    popularVisas: string[];
+    successRate: string;
+    applicantsProcessed: string;
+  };
   quickFacts: string[];
+  overlayPosition: 'bottom-left' | 'bottom-right' | 'center'; // Where overlay appears
+  animationDelay: number; // Stagger animation timing
+  testimonial?: {
+    quote: string;
+    author: string;
+    position: string;
+  };
 }
 
 // Types for FAQ

@@ -1,223 +1,288 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { countriesData } from '@/data/countries';
 
 const CountriesSection = () => {
-  const [selectedCountry, setSelectedCountry] = useState<number | null>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-  // Sample country data (will be replaced with actual data)
-  const countries = [
-    {
-      id: 1,
-      name: 'Canada',
-      benefit: 'High quality of life and excellent healthcare',
-      image: '/images/countries/canada.jpg',
-      quickFacts: [
-        'Processing Time: 6-12 months',
-        'Popular Visas: Express Entry, PNP',
-        'Language: English/French',
-      ],
-    },
-    {
-      id: 2,
-      name: 'Australia',
-      benefit: 'Strong economy and diverse job market',
-      image: '/images/countries/australia.jpg',
-      quickFacts: [
-        'Processing Time: 8-16 months',
-        'Popular Visas: Skilled Migration, Student',
-        'Language: English',
-      ],
-    },
-    {
-      id: 3,
-      name: 'United Kingdom',
-      benefit: 'Global financial hub with rich culture',
-      image: '/images/countries/uk.jpg',
-      quickFacts: [
-        'Processing Time: 3-12 months',
-        'Popular Visas: Skilled Worker, Student',
-        'Language: English',
-      ],
-    },
-    {
-      id: 4,
-      name: 'Germany',
-      benefit: 'Economic powerhouse with innovation focus',
-      image: '/images/countries/germany.jpg',
-      quickFacts: [
-        'Processing Time: 3-9 months',
-        'Popular Visas: EU Blue Card, Job Seeker',
-        'Language: German/English',
-      ],
-    },
-    {
-      id: 5,
-      name: 'New Zealand',
-      benefit: 'Stunning landscapes and work-life balance',
-      image: '/images/countries/new-zealand.jpg',
-      quickFacts: [
-        'Processing Time: 9-15 months',
-        'Popular Visas: Skilled Migration, Working Holiday',
-        'Language: English',
-      ],
-    },
-    {
-      id: 6,
-      name: 'United States',
-      benefit: 'Land of opportunity with diverse industries',
-      image: '/images/countries/usa.jpg',
-      quickFacts: [
-        'Processing Time: 6-24 months',
-        'Popular Visas: H-1B, L-1, O-1',
-        'Language: English',
-      ],
-    },
-  ];
+  // Calculate which card should be active based on scroll
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
+      const cardIndex = Math.floor(latest * countriesData.length);
+      const clampedIndex = Math.min(Math.max(cardIndex, 0), countriesData.length - 1);
+      setActiveIndex(clampedIndex);
+    });
 
-  const openCountryModal = (countryId: number) => {
-    setSelectedCountry(countryId);
-  };
-
-  const closeCountryModal = () => {
-    setSelectedCountry(null);
-  };
-
-  // Get selected country data
-  const selectedCountryData = selectedCountry 
-    ? countries.find(country => country.id === selectedCountry) 
-    : null;
+    return () => unsubscribe();
+  }, [scrollYProgress]);
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-poppins text-[#0D2F5B] mb-4">
-            Countries You Can Settle With Us
-          </h2>
-          <p className="text-xl text-[#64748B] max-w-2xl mx-auto font-lato">
-            Explore destination countries and their immigration opportunities
-          </p>
-        </div>
-
-        {/* Vertical Scroller Container */}
-        <div className="max-w-4xl mx-auto">
-          <div 
-            ref={scrollContainerRef}
-            className="h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-[#D4AF37] scrollbar-track-[#F1F5F9] scrollbar-rounded"
+    <section className="bg-white">
+      {/* Section Header */}
+      <div className="py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pr-4">
-              {countries.map((country, index) => (
-                <motion.div
-                  key={country.id}
-                  className="group relative rounded-2xl overflow-hidden shadow-lg cursor-pointer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                  onClick={() => openCountryModal(country.id)}
-                >
-                  {/* Image with overlay */}
-                  <div className="relative h-64">
-                    <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D2F5B]/80 to-transparent"></div>
-                    
-                    {/* Overlay content */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-2xl font-bold font-poppins mb-2">
-                        {country.name}
-                      </h3>
-                      <p className="font-lato">
-                        {country.benefit}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Cross-reference note */}
-        <div className="text-center mt-12">
-          <p className="text-[#64748B] italic font-lato">
-            See country highlights in 'Countries you can settle with us' for example cases and quick facts.
-          </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-poppins text-[#0D2F5B] mb-4">
+              Countries You Can Settle With Us
+            </h2>
+            <p className="text-xl text-[#64748B] max-w-3xl mx-auto font-lato leading-relaxed">
+              We're experts in various immigration destinations
+            </p>
+          </motion.div>
         </div>
       </div>
 
-      {/* Country Detail Modal */}
-      {selectedCountryData && (
-        <motion.div
-          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <motion.div
-            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-            initial={{ scale: 0.9, y: 20 }}
-            animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.9, y: 20 }}
-          >
-            <div className="p-6">
-              {/* Modal Header */}
-              <div className="flex justify-between items-start mb-6">
-                <h3 className="text-2xl font-bold font-poppins text-[#0D2F5B]">
-                  {selectedCountryData.name}
-                </h3>
-                <button
-                  onClick={closeCountryModal}
-                  className="text-[#64748B] hover:text-[#0D2F5B] transition-colors"
-                  aria-label="Close modal"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Country Image */}
-              <div className="rounded-xl overflow-hidden mb-6 h-48">
-                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
-              </div>
-
-              {/* Benefit */}
-              <p className="text-lg text-[#64748B] mb-6 font-lato">
-                {selectedCountryData.benefit}
-              </p>
-
-              {/* Quick Facts */}
-              <div className="mb-8">
-                <h4 className="font-bold font-poppins text-lg text-[#0D2F5B] mb-4">
-                  Quick Facts
-                </h4>
-                <ul className="space-y-3">
-                  {selectedCountryData.quickFacts.map((fact, index) => (
-                    <li key={index} className="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#D4AF37] mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-[#64748B] font-lato">{fact}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* CTA Button */}
-              <motion.button
-                className="w-full bg-[#D4AF37] text-[#0D2F5B] font-poppins font-semibold text-lg py-4 rounded-full hover:bg-[#c0a030] transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+      {/* Vertical Scrolling Countries Section */}
+      <div ref={containerRef} className="min-h-[300vh] relative">
+        {/* Sticky container for cards */}
+        <div className="sticky top-0 h-screen overflow-hidden">
+          {countriesData.map((country, index) => {
+            const isActive = index === activeIndex;
+            const isPrev = index < activeIndex;
+            const isNext = index > activeIndex;
+            
+            return (
+              <motion.div
+                key={country.id}
+                className="absolute inset-0 w-full h-full"
+                initial={{ opacity: 0, y: 100, scale: 0.9 }}
+                animate={isActive ? 
+                  { opacity: 1, y: 0, scale: 1 } : 
+                  { opacity: 0, y: 100, scale: 0.9 }
+                }
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                style={{
+                  zIndex: isActive ? 10 : isPrev ? 5 : 1
+                }}
               >
-                Learn more / Start your application
-              </motion.button>
-            </div>
+                {/* Full Screen Background Image */}
+                <div className="relative w-full h-full overflow-hidden">
+                  {/* Background Image */}
+                  <div className="absolute inset-0 w-full h-full">
+                    {/* Background image using heroImage property */}
+                    <div 
+                      className="w-full h-full bg-gradient-to-br from-[#0D2F5B] via-[#1e40af] to-[#3b82f6] flex items-center justify-center"
+                      style={{
+                        backgroundImage: country.heroImage ? `url(${country.heroImage})` : undefined,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                      }}
+                    >
+                      {!country.heroImage && (
+                        <div className="text-white text-9xl font-bold opacity-10">
+                          {country.name.charAt(0)}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-black/40" />
+
+                  {/* Content Overlay */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={isActive ? 
+                      { opacity: 1, x: 0 } : 
+                      { opacity: 0, x: -50 }
+                    }
+                    transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                  >
+                    <div className="container mx-auto px-4 md:px-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        {/* Left Column - Country Info */}
+                        <div className="text-white">
+                          {/* Country Badge */}
+                          <motion.div
+                            className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6"
+                            variants={{
+                              hidden: { opacity: 0, x: -20 },
+                              visible: { opacity: 1, x: 0, transition: { delay: 0.4 } }
+                            }}
+                          >
+                            <div className="w-8 h-8 rounded-full bg-[#D4AF37] flex items-center justify-center">
+                              <span className="text-[#0D2F5B] text-sm font-bold">
+                                {country.name.charAt(0)}
+                              </span>
+                            </div>
+                            <span className="text-[#D4AF37] font-poppins font-semibold">
+                              Case Study
+                            </span>
+                          </motion.div>
+
+                          {/* Country Name */}
+                          <motion.h3
+                            className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins mb-4"
+                            variants={{
+                              hidden: { opacity: 0, y: 30 },
+                              visible: { opacity: 1, y: 0, transition: { delay: 0.5 } }
+                            }}
+                          >
+                            {country.name}
+                          </motion.h3>
+
+                          {/* Tagline */}
+                          <motion.p
+                            className="text-[#D4AF37] font-poppins font-semibold text-xl md:text-2xl mb-6"
+                            variants={{
+                              hidden: { opacity: 0, y: 20 },
+                              visible: { opacity: 1, y: 0, transition: { delay: 0.6 } }
+                            }}
+                          >
+                            {country.tagline}
+                          </motion.p>
+
+                          {/* Description */}
+                          <motion.p
+                            className="text-white/90 font-lato text-lg md:text-xl leading-relaxed mb-8 max-w-2xl"
+                            variants={{
+                              hidden: { opacity: 0, y: 20 },
+                              visible: { opacity: 1, y: 0, transition: { delay: 0.7 } }
+                            }}
+                          >
+                            {country.description}
+                          </motion.p>
+
+                          {/* CTA Button */}
+                          <motion.button
+                            className="bg-[#D4AF37] text-[#0D2F5B] font-poppins font-semibold px-8 py-4 rounded-full hover:bg-[#c0a030] transition-all duration-300 inline-flex items-center gap-3"
+                            variants={{
+                              hidden: { opacity: 0, y: 20 },
+                              visible: { opacity: 1, y: 0, transition: { delay: 0.8 } }
+                            }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <span>Read Case</span>
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </motion.button>
+                        </div>
+
+                        {/* Right Column - Statistics */}
+                        <div className="space-y-6">
+                          {/* Main Statistic */}
+                          <motion.div
+                            className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                            transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+                          >
+                            <div className="text-[#D4AF37] font-poppins font-bold text-3xl md:text-4xl mb-2">
+                              {country.statistics.successRate}
+                            </div>
+                            <div className="text-white text-lg font-poppins">Success Rate</div>
+                          </motion.div>
+
+                          {/* Secondary Statistics */}
+                          <div className="grid grid-cols-2 gap-4">
+                            <motion.div
+                              className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                              transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+                            >
+                              <div className="text-[#D4AF37] font-poppins font-bold text-xl mb-1">
+                                {country.statistics.applicantsProcessed}
+                              </div>
+                              <div className="text-white/80 text-sm">Processed</div>
+                            </motion.div>
+
+                            <motion.div
+                              className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                              transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
+                            >
+                              <div className="text-[#D4AF37] font-poppins font-bold text-xl mb-1">
+                                {country.statistics.processingTime}
+                              </div>
+                              <div className="text-white/80 text-sm">Timeline</div>
+                            </motion.div>
+                          </div>
+
+                          {/* Testimonial */}
+                          {country.testimonial && (
+                            <motion.div
+                              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 border-l-4 border-l-[#D4AF37]"
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                              transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
+                            >
+                              <p className="text-white/90 italic font-lato mb-4 text-lg">
+                                "{country.testimonial.quote}"
+                              </p>
+                              <div className="text-[#D4AF37] font-poppins font-semibold">
+                                {country.testimonial.author}
+                              </div>
+                              <div className="text-white/70 text-sm">
+                                {country.testimonial.position}
+                              </div>
+                            </motion.div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Progress Indicator */}
+        <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-20">
+          <div className="flex flex-col space-y-2">
+            {countriesData.map((_, index) => (
+              <div
+                key={index}
+                className={`w-2 h-8 rounded-full transition-all duration-300 ${
+                  index === activeIndex ? 'bg-[#D4AF37]' : 'bg-white/30'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Final CTA Section */}
+      <div className="py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-[#64748B] font-lato text-lg mb-6">
+              Ready to start your immigration journey?
+            </p>
+            <motion.button
+              className="bg-[#0D2F5B] text-white font-poppins font-semibold px-8 py-4 rounded-full hover:bg-[#1e40af] transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Get Expert Consultation
+            </motion.button>
           </motion.div>
-        </motion.div>
-      )}
+        </div>
+      </div>
     </section>
   );
 };
