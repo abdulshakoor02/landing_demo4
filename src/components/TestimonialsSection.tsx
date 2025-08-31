@@ -139,7 +139,11 @@ const TestimonialsSection = () => {
               {/* Author */}
               <div className="flex flex-col items-center">
                 <div className="w-16 h-16 rounded-full overflow-hidden mb-4">
-                  <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+                  <img
+                    src={testimonials[currentIndex].image}
+                    alt={`${testimonials[currentIndex].name} - ${testimonials[currentIndex].location}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="font-bold font-poppins text-lg text-[#0D2F5B]">
                   {testimonials[currentIndex].name}
@@ -178,7 +182,11 @@ const TestimonialsSection = () => {
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full overflow-hidden mr-3">
-                      <div className="bg-gray-200 border-2 border-dashed rounded-xl w-10 h-10" />
+                      <img
+                        src={testimonial.image}
+                        alt={`${testimonial.name} - ${testimonial.location}`}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div>
                       <h4 className="font-bold font-poppins text-[#0D2F5B]">
