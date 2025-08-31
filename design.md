@@ -58,58 +58,120 @@
 *   **Animation:** An infinite, smooth, left-to-right scroll animation. The marquee should pause on hover. The logos will be in grayscale and turn to full color on hover.
 
 ### 2.4. Services Section
-*   **Layout:** A 3-column grid of cards on a light neutral background (`#F1F5F9`).
-*   **Card Content:** Each card represents a core service.
-    *   **Icon:** A gold-accented icon at the top.
-    *   **Title (H3):** e.g., "Skilled Worker Visas"
-    *   **Description (p):** A brief 2-3 sentence explanation.
+*   **Layout:** A full-width interactive section with a dark-themed background featuring prominent geometric 3D elements that visually represent each service.
+*   **Visual Design:**
+    *   **Background:** Dynamic 3D geometric elements that change based on the selected service
+    *   **Overlay Card:** A text panel overlayed on top of the 3D background that displays service information
+    *   **Color Scheme:** Dark theme with gold accent colors for text and UI elements to ensure proper contrast
+*   **Content Structure:**
+    *   **Overlay Text Card:** Contains the service title and detailed description
+    *   **Service Navigation:** A bottom navigation bar with text labels for each service (not dots), allowing users to switch between different services
+*   **Interactive Experience:**
+    *   When a user clicks on a service name in the bottom navigation:
+        *   The background 3D geometric element transitions to represent the selected service
+        *   The overlay text card content updates to show the corresponding service information
+    *   This creates a carousel/slider-style experience where users can explore different services through the text-based bottom navigation
 *   **Animation:**
-    *   As the user scrolls this section into view, the cards will animate in with a "stagger" effect. Each card will fade in and scale up slightly (`opacity: 0 -> 1`, `scale: 0.95 -> 1`), with a 100ms delay between each card.
-    *   **On Hover:** The card will lift up (`y: -5px`) and a soft shadow will appear, providing tactile feedback.
+    *   Smooth transitions between service views with fade and morph effects for the 3D background elements
+    *   Staggered text animation for the overlay card content when switching services
+    *   Hover effects on the navigation text elements to indicate interactivity
 
 ### 2.5. Success Stories Section (Detailed Implementation)
-This is the most complex interactive element, inspired by the "Our Projects" section of the reference site.
+This is the most complex interactive element, inspired by the flexy.global design with advanced scroll interactions.
 
 *   **Component Name:** `SuccessStoriesSection`
-*   **Layout:**
-    1.  **Section Title (H2):** "Client Success Stories"
-    2.  **Tab Navigation:** A horizontal list of tabs.
-    3.  **Content Grid:** A **2-column masonry grid** of cards that updates based on the selected tab. A masonry layout allows cards to have variable heights and fit together in a compact, visually interesting way.
+*   **Layout Structure:**
+    *   **Split Layout:** Two-column design with distinct scrolling behaviors
+    *   **Left Column (Sticky):** Fixed-position text content that remains visible during right column scrolling
+    *   **Right Column (Scrollable):** Masonry grid layout with independent vertical scrolling within section boundaries
+    *   **Container:** Full-width section with controlled overflow for the scrollable area
 
-*   **Tab Navigation - Detailed Implementation:**
-    *   **Functionality:** This will be a controlled component. Clicking a tab updates the state, which in turn filters the stories displayed in the grid.
-    *   **Tabs:** Each tab represents an immigration category.
+*   **Left Column - Sticky Content:**
+    *   **Position:** `position: sticky` with top positioning to remain fixed during scroll
+    *   **Content:**
+        *   **Section Title (H2):** "Client Success Stories"
+        *   **Introduction Text:** Brief overview of success stories and client achievements
+        *   **Trust Indicators:** Key statistics or metrics displayed prominently
+        *   **Navigation Hints:** Visual cues indicating scrollable content to the right
+    *   **Visual Design:** Clean typography with proper hierarchy, using the established color palette
+
+*   **Right Column - Scrollable Masonry Grid:**
+    *   **Layout:** Irregular masonry grid with varying card heights for organic, dynamic feel
+    *   **Scroll Behavior:** Independent vertical scrolling container (`overflow-y: auto`) contained within section
+    *   **Folder-like Card Design:**
+        *   **Visual Style:** Mimics file folders with tab-like headers and layered appearance
+        *   **Backgrounds:** Gradient backgrounds with subtle shadows for depth
+        *   **Content Organization:** Each card represents a success story with:
+            *   **Category Tag:** Pill-shaped indicator (e.g., "Skilled Worker", "Family Visa")
+            *   **Client Name/Title:** Prominent heading for each success story
+            *   **Achievement Summary:** Brief description of the immigration success
+            *   **Key Metrics:** Important statistics or timeline information
+            *   **Visual Elements:** Icons or small imagery representing the story type
+    *   **Interactions:**
+        *   **Hover States:** Cards elevate with increased shadow and subtle scale transformation
+        *   **Scroll Indicators:** Visual feedback showing scrollable content availability
+        *   **Smooth Transitions:** CSS transitions for all interactive elements
+
+*   **Tab Navigation System:**
+    *   **Functionality:** Filter-based navigation to categorize success stories
+    *   **Categories:**
         *   `Skilled Worker Programs`
         *   `Family Sponsorship`
         *   `Investor & Business Visas`
         *   `Student Visas`
-    *   **Visuals & Animation:**
-        *   The active tab will have a gold-colored text and a matching underline.
-        *   When a new tab is clicked, the underline will not just appear; it will **animate its position and width**, sliding smoothly from the old tab to the new one. This can be achieved with Framer Motion's `layoutId` prop, which creates a seamless "magic move" effect.
+        *   `All Stories` (Default view)
+    *   **Visual Design:**
+        *   Horizontal tab bar with active state indicators
+        *   Gold accent color for active tab with smooth transition animations
+        *   Hover effects with subtle background changes
 
-*   **Card Grid & Cards - Detailed Implementation:**
-    *   **Card Structure (The `StoryCard` component):**
-        *   **Background:** This is the key visual. Each card will have a high-quality background image representing the success story.
-            *   **Visual Effect 1 (Dynamic Feel):** The background image will have a subtle, slow "Ken Burns" effect (constantly and slowly zooming and panning).
-            *   **Visual Effect 2 (3D Parallax on Hover):** On mouse hover over the card, the background image will react to the mouse position, moving slightly in the opposite direction.
-        *   **Overlay:** A dark gradient overlay (`linear-gradient(to top, rgba(0,0,0,0.8), transparent)`).
-        *   **Content (Layered/Collage Style):**
-            *   **Tag:** A small pill-shaped tag at the top, e.g., "Case Study".
-            *   **Main Title (H4):** "Anjali's Tech Career in Canada"
-            *   **Description (p):** "From Bangalore to Toronto: How we facilitated a seamless Express Entry process."
-            *   **Metrics Card:** A small, offset, card-within-a-card element with a semi-transparent background, showcasing key results like: `Visa Approved: 3 Months` or `Investment: $500K`.
-    *   **Animation:**
-        *   **Grid Update:** When the user clicks a new tab, the cards in the grid should not just be replaced instantly. The old cards should fade out (`opacity: 1 -> 0`), and the new cards for the selected category should fade in (`opacity: 0 -> 1`).
-        *   **Card Hover:** In addition to the parallax background, when a user hovers over a card, the gradient overlay can become slightly darker, and a "View Story ->" link can appear.
+*   **Animation & Micro-interactions:**
+    *   **Sticky Element Transition:** Smooth appearance/disappearance of sticky left content
+    *   **Grid Filtering:** Cross-fade animation when filtering between categories
+    *   **Scroll Reveal:** Cards animate into view as user scrolls the right column
+    *   **Hover Effects:** Parallax-like movements and opacity changes on card interaction
+    *   **Loading States:** Subtle loading animations when filtering content
+
+*   **Responsive Behavior:**
+    *   **Desktop:** Full split layout with sticky left and scrollable right
+    *   **Tablet:** Modified layout with reduced column widths, maintaining scroll behavior
+    *   **Mobile:** Stacked layout with both sections becoming independently scrollable
+    *   **Touch Interactions:** Optimized for touch devices with appropriate feedback
+
+*   **Accessibility Considerations:**
+    *   Keyboard navigation support for tab selection
+    *   Screen reader compatibility with proper ARIA labels
+    *   Focus indicators for interactive elements
+    *   Reduced motion preferences respected
 
 ### 2.6. Testimonials Section
-*   **Layout:** A full-width section with a single, prominent testimonial visible at a time, functioning as a carousel.
-*   **Visuals:**
-    *   Large quotation marks as a background design element.
-    *   Client's photo (in a circle frame), Name, and Country of Origin.
+*   **Layout:** A full-width section with a grid or masonry layout of testimonial cards, titled "Client Success Stories" in a prominent heading.
+*   **Header Section:**
+    *   Sticky navigation bar at the top with consultancy logo on the left and navigation links on the right
+    *   Navigation includes: Home, Services, Success Stories, About Us, Contact, and a "Book a Consultation" CTA button
+*   **Testimonial Card Design:**
+    *   Multiple testimonial cards arranged in a responsive grid layout
+    *   Each card contains:
+        *   Client profile photo (circular frame)
+        *   Client name and title/location
+        *   Testimonial quote text in readable typography
+        *   Star rating system (5-star ratings visible)
+    *   Clean, modern card design with subtle shadows and rounded corners
+    *   Consistent spacing and alignment for visual harmony
+*   **Visual Design:**
+    *   Professional color scheme using the established palette (deep sapphire blue, white, soft gold accents)
+    *   Ample white space for readability and visual breathing room
+    *   Clean typography hierarchy with proper contrast
+    *   Subtle shadows for depth and card separation
+*   **Responsive Behavior:**
+    *   Grid layout adapts to different screen sizes
+    *   Columns reduce on tablet and mobile views
+    *   Cards maintain consistent spacing and proportions across devices
 *   **Animation:**
-    *   The carousel will auto-play every 8 seconds.
-    *   The transition between testimonials will be a smooth, horizontal slide.
+    *   Smooth carousel/slider functionality for browsing testimonials
+    *   Subtle hover effects on testimonial cards (elevation with shadow enhancement)
+    *   Smooth transitions between testimonial views
+    *   Staggered card reveal animations as user scrolls into view
 
 ### 2.7. FAQ Section
 *   **Layout:** A two-column layout. The left column has a title "Your Questions, Answered". The right column contains an accordion.
