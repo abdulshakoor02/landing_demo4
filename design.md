@@ -173,7 +173,29 @@ This is the most complex interactive element, inspired by the flexy.global desig
     *   Smooth transitions between testimonial views
     *   Staggered card reveal animations as user scrolls into view
 
-### 2.7. FAQ Section
+### 2.7. Countries you can settle with us
+*   **Purpose:** Showcase destination countries using a contained vertical image scroller that highlights country imagery, quick facts, and a CTA to learn more.
+*   **Layout & Visuals:**
+    *   A contained section with a fixed-height vertical scroller displaying stacked images (images_scroller asset). Each item consists of two stacked images visible one-after-the-other within the scroller. Images have a semi-transparent dark overlay to ensure text contrast.
+    *   Overlay text: centered, large country name (Poppins, 600), and a one-line benefit/summary (Lato, 400) beneath. Overlay uses the gold accent for country name and white for the subtitle.
+    *   Image treatment: subtle rounded corners, soft drop shadow, and an inner gradient to improve legibility.
+*   **Interactions & Micro-interactions:**
+    *   Contained vertical scrolling (`overflow-y: auto`) within the section, independent from page scroll.
+    *   Subtle parallax effect: foreground overlay moves slightly slower than the image during scroll for depth.
+    *   On hover (desktop): overlay opacity increases, image scale to 1.02, and a soft elevation shadow appears.
+    *   Click/tap opens a detail modal with country quick facts (processing times, popular visas, starting checklist) and a prominent CTA button `Learn more / Start your application`.
+*   **Responsive Behavior:**
+    *   Desktop: two stacked images visible in the scroller; section width constrained to content grid; horizontal padding preserved.
+    *   Tablet: stacked images remain but reduced height; overlays scale down for readability.
+    *   Mobile: single-column stacked images (one visible at a time), full-width container, touch-optimized vertical swipe.
+*   **Accessibility:**
+    *   Each scroller item is a keyboard-focusable card with an accessible name (aria-label="Country — {Country Name}").
+    *   Modal: Trap focus, provide close button, and accessible headings. Respect prefers-reduced-motion.
+    *   Ensure sufficient color contrast for overlay text (WCAG AA minimum).
+*   **Placement & Cross-references:**
+    *   Place directly after the Testimonials section and before the FAQ section. Cross-reference in the Success Stories area where relevant: "See country highlights in ‘Countries you can settle with us’ for example cases and quick facts."
+
+### 2.8. FAQ Section
 *   **Layout:** A two-column layout. The left column has a title "Your Questions, Answered". The right column contains an accordion.
 *   **Accordion Item:** Each item has a question and an answer.
 *   **Animation:**
@@ -182,14 +204,14 @@ This is the most complex interactive element, inspired by the flexy.global desig
     *   An icon (e.g., a `+`) next to the question will animate into an `x` on expansion.
     *   Only one question can be open at a time. Clicking a new question will collapse the previously open one.
 
-### 2.8. Final CTA Section
+### 2.9. Final CTA Section
 *   **Layout:** A full-width section with the primary blue background color (`#0D2F5B`).
 *   **Content:**
     *   **Headline (H2):** "Ready to Start Your Immigration Story?" (in white text).
     *   **Button:** The same gold `Book a Consultation` button, centered and large.
 *   **Animation:** As the user scrolls this into view, a subtle pattern or world map graphic can fade into the background to add visual interest.
 
-### 2.9. Footer
+### 2.10. Footer
 *   **Top Part (Marquee):** Before the main footer content, include a large, bold, scrolling marquee with the text "Let's Work Together • Let's Work Together •" in the gold accent color. This is a final, high-impact visual statement.
 *   **Main Layout:** A 4-column layout.
 *   **Content:**
