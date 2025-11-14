@@ -39,7 +39,7 @@ const CountriesSection = () => {
               Countries You Can Settle With Us
             </h2>
             <p className="text-xl text-[#64748B] max-w-3xl mx-auto font-lato leading-relaxed">
-              We're experts in various immigration destinations
+              We're experts in various visa destinations
             </p>
           </motion.div>
         </div>
@@ -271,7 +271,7 @@ const CountriesSection = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="text-[#64748B] font-lato text-lg mb-6">
-              Ready to start your immigration journey?
+              Ready to start your visa journey?
             </p>
             <motion.button
               className="bg-[#0D2F5B] text-white font-poppins font-semibold px-8 py-4 rounded-full hover:bg-[#1e40af] transition-all duration-300"

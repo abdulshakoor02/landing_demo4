@@ -16,7 +16,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Home', 'Services', 'Success Stories', 'About Us', 'Contact'];
+  const navItems = ['Home', 'Countries', 'Services', 'Success Stories', 'FAQ', 'Contact'];
 
   return (
     <motion.header
@@ -34,7 +34,7 @@ const Header = () => {
         {/* Logo */}
         <div className="text-2xl font-bold text-white">
           {/* Replace with actual logo */}
-          <span className="font-poppins font-semibold">Immigration<span className="text-[#D4AF37]">Pro</span></span>
+          <span className="font-poppins font-semibold">The Visa <span className="text-[#D4AF37]">Guy</span></span>
         </div>
 
         {/* Desktop Navigation */}

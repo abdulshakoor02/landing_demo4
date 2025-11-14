@@ -20,7 +20,7 @@ const FinalCTASection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Ready to Start Your Immigration Story?
+            Apply Now with 25% Off – Start Your Visa Journey
           </motion.h2>
           
           <motion.p 
@@ -30,20 +30,35 @@ const FinalCTASection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Take the first step toward your new beginning. Schedule a consultation with our experts today.
+            From Dubai to the world, The Visa Guy makes visa applications simple and stress-free. Book your free consultation today!
           </motion.p>
           
-          <motion.button
-            className="bg-[#D4AF37] text-[#0D2F5B] font-poppins font-semibold text-lg px-10 py-4 rounded-full hover:bg-[#c0a030] transition-colors duration-300 shadow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Book a Consultation
-          </motion.button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.button
+              className="bg-[#D4AF37] text-[#0D2F5B] font-poppins font-semibold text-lg px-10 py-4 rounded-full hover:bg-[#c0a030] transition-colors duration-300 shadow-lg flex items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Apply Now
+              <span className="ml-2 bg-[#0D2F5B] text-white text-sm px-2 py-1 rounded-full">25% OFF</span>
+            </motion.button>
+            
+            <motion.button
+              className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-poppins font-semibold text-lg px-10 py-4 rounded-full hover:bg-white/20 transition-colors duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Book Free Consultation
+            </motion.button>
+          </div>
         </div>
       </div>
     </section>

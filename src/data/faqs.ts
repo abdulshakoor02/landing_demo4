@@ -7,32 +7,32 @@ export interface FAQ {
 export const faqsData: FAQ[] = [
   {
     id: 1,
-    question: 'How long does the immigration process typically take?',
-    answer: 'The immigration process varies significantly depending on the country, visa type, and individual circumstances. Generally, it can take anywhere from 3 months to 2 years. We provide personalized timelines during our initial consultation based on your specific situation.'
+    question: 'How does The Visa Guy simplify visa applications from UAE?',
+    answer: 'The Visa Guy offers door-step service, free consultation, and expert guidance throughout your visa application process. We handle document preparation, submission, and follow-ups from Dubai and Abu Dhabi, making visa applications stress-free for UAE residents.'
   },
   {
     id: 2,
-    question: 'What documents do I need to start the application process?',
-    answer: 'Required documents vary by visa type and country, but generally include: passport, educational credentials, employment records, financial statements, medical examinations, and police certificates. We provide a comprehensive checklist during our initial consultation.'
+    question: 'What countries do you cover with your visa services?',
+    answer: 'We provide visa assistance for 75+ countries worldwide, including popular destinations like Turkey, Italy, France, Germany, Switzerland, UK, and many Schengen countries. Our extensive network covers tourist, business, and family visa types.'
   },
   {
     id: 3,
-    question: 'Can I apply for immigration if I don\'t have a job offer?',
-    answer: 'Yes, many countries offer immigration pathways without a job offer, including skilled worker programs, investor visas, and student pathways. Our team will assess your qualifications to identify the best options for your situation.'
+    question: 'How long does it take to get Schengen visas from UAE?',
+    answer: 'Schengen visa processing typically takes 15-30 days from UAE. We specialize in fast-track applications for urgent travel needs and have achieved 90%+ success rates for UAE residents applying for Schengen tourist and business visas.'
   },
   {
     id: 4,
-    question: 'How much does the immigration process cost?',
-    answer: 'Costs vary based on the complexity of your case, destination country, and services required. Government fees typically range from $1,000-$5,000, while professional services depend on case complexity. We provide transparent pricing during our consultation.'
+    question: 'What are the costs for UAE residents?',
+    answer: 'Our pricing is transparent and competitive for UAE residents. Currently, we offer 25% discount on all visa applications. Costs vary by destination and visa type, but our free consultation provides exact quotes with no hidden fees.'
   },
   {
     id: 5,
-    question: 'What happens if my application is refused?',
-    answer: 'If your application is refused, we analyze the reasons and explore options such as appeals, re-applications with additional documentation, or alternative pathways. Our team has extensive experience with complex cases and refusals.'
+    question: 'What if my visa application is refused?',
+    answer: 'If your application is refused, we provide reapplication support at no additional cost. Our experts analyze refusal reasons, strengthen your application, and guide you through the appeal or reapplication process to maximize your chances of success.'
   },
   {
     id: 6,
-    question: 'Do you guarantee approval of my application?',
-    answer: 'While we cannot guarantee approval due to government discretion, we maintain a 98% success rate by ensuring complete documentation, thorough preparation, and expert guidance. Our transparent approach includes realistic assessments of your chances.'
+    question: 'How do I book a consultation?',
+    answer: 'Booking a free consultation is easy! You can use our "Book Free Consultation" button, chat with our visa experts online, or call our Dubai office. Our team is available to discuss your visa requirements and provide personalized guidance.'
   }
 ];

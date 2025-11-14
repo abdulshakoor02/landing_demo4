@@ -2,37 +2,12 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { servicesData } from '@/data/services';
 
 const ServicesSection = () => {
   const [activeService, setActiveService] = useState(0);
 
-  // Sample service data (will be replaced with actual data)
-  const services = [
-    {
-      id: 1,
-      title: 'Visa Applications',
-      description: 'Comprehensive assistance with all types of visa applications including work, student, and family visas. Our experts guide you through every step of the process to ensure maximum success.',
-      icon: '📄',
-    },
-    {
-      id: 2,
-      title: 'Immigration Law',
-      description: 'Expert legal representation for complex immigration cases. We handle appeals, deportations, and other legal challenges with proven success rates.',
-      icon: '⚖️',
-    },
-    {
-      id: 3,
-      title: 'Citizenship Services',
-      description: 'Complete support through the naturalization process, including eligibility assessment, application preparation, and interview preparation.',
-      icon: '🛂',
-    },
-    {
-      id: 4,
-      title: 'Business Immigration',
-      description: 'Specialized services for entrepreneurs and businesses seeking to expand internationally, including investor visas and intra-company transfers.',
-      icon: '🏢',
-    },
-  ];
+  const services = servicesData;
 
   return (
     <section className="py-20 bg-gradient-to-br from-[#0D2F5B] to-[#1a3d6b] text-white relative overflow-hidden">
@@ -68,9 +43,9 @@ const ServicesSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">Our Immigration Services</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">Our Visa Services</h2>
           <p className="text-xl text-[#F1F5F9] max-w-2xl mx-auto font-lato">
-            Comprehensive solutions tailored to your unique immigration journey
+            Door-step visa solutions tailored to your unique travel needs from UAE
           </p>
         </div>
 

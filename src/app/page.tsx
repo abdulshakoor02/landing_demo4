@@ -6,6 +6,7 @@ import useScrollProgress from '@/hooks/useScrollProgress';
 // Dynamically import components with lazy loading
 const Header = dynamic(() => import('@/components/Header'), { ssr: true });
 const HeroSection = dynamic(() => import('@/components/HeroSection'), { ssr: true });
+const AboutSection = dynamic(() => import('@/components/AboutSection'), { ssr: true });
 const PartnersMarquee = dynamic(() => import('@/components/PartnersMarquee'), { ssr: true });
 const ServicesSection = dynamic(() => import('@/components/ServicesSection'), { ssr: true });
 const SuccessStoriesSection = dynamic(() => import('@/components/SuccessStoriesSection'), { ssr: true });
@@ -35,6 +36,9 @@ export default function Home() {
       
       {/* Hero Section */}
       <HeroSection />
+      
+      {/* About Section */}
+      <AboutSection />
       
       {/* Partners Marquee */}
       <PartnersMarquee />

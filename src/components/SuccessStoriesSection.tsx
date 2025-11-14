@@ -97,7 +97,7 @@ const SuccessStoriesSection = () => {
             </h2>
             
             <p className="text-lg text-[#64748B] mb-8 font-lato">
-              Real journeys, real results. Discover how we've helped individuals and families achieve their immigration goals across the globe.
+              Real journeys, real results. Discover how we've helped UAE residents achieve their visa goals across the globe.
             </p>
             
             <div className="space-y-6 mb-10">

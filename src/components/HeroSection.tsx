@@ -7,13 +7,13 @@ const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Split headline into words for animation
-  const headlineWords = "Your Gateway to a New Beginning".split(" ");
+  const headlineWords = "Visa Simplified.".split(" ");
   
   // Subheadline
-  const subHeadline = "Expert guidance for your global immigration journey. We turn aspirations into reality.";
+  const subHeadline = "Navigating the visa application process can be complex and time-consuming. But don't worry, we're here to help! At The Visa Guy, we specialize in making visa applications stress-free.";
   
   // Social proof text
-  const socialProof = "*Recognized by [Official Immigration Body] & Featured in [Major News Outlet]*";
+  const socialProof = "75+ countries • Fast & flexible • Secure";
 
   useEffect(() => {
     // Try to play the video when component mounts
@@ -95,27 +95,45 @@ const HeroSection = () => {
           {socialProof}
         </motion.p>
 
-        {/* CTA Button */}
-        <motion.button
-          className="bg-[#D4AF37] text-[#0D2F5B] font-poppins font-semibold text-lg px-8 py-4 rounded-full hover:bg-[#c0a030] transition-colors duration-300 flex items-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label="Start your immigration journey"
-        >
-          Start Your Journey
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-5 w-5 ml-2 transition-transform duration-300"
-            viewBox="0 0 20 20" 
-            fill="currentColor"
-            aria-hidden="true"
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.button
+            className="bg-[#D4AF37] text-[#0D2F5B] font-poppins font-semibold text-lg px-8 py-4 rounded-full hover:bg-[#c0a030] transition-colors duration-300 flex items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Apply now with 25% off"
           >
-            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-          </svg>
-        </motion.button>
+            Apply Now
+            <span className="ml-2 bg-[#0D2F5B] text-white text-xs px-2 py-1 rounded-full">25% OFF</span>
+          </motion.button>
+          
+          <motion.button
+            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-poppins font-semibold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.0 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Book free consultation"
+          >
+            Book Free Consultation
+          </motion.button>
+          
+          <motion.button
+            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-poppins font-semibold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.1 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Chat with visa expert"
+          >
+            Chat with Visa Expert
+          </motion.button>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

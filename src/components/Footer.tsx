@@ -24,14 +24,14 @@ const Footer = () => {
           {/* First set of text */}
           <div className="flex items-center mx-8">
             <span className="text-2xl font-bold font-poppins text-[#D4AF37]">
-              Let's Work Together • Let's Work Together •
+              Visa Simplified • Door-Step Service • 75+ Countries • Free Consultation •
             </span>
           </div>
           
           {/* Duplicate set for seamless loop */}
           <div className="flex items-center mx-8">
             <span className="text-2xl font-bold font-poppins text-[#D4AF37]">
-              Let's Work Together • Let's Work Together •
+              Visa Simplified • Door-Step Service • 75+ Countries • Free Consultation •
             </span>
           </div>
         </div>
@@ -43,10 +43,10 @@ const Footer = () => {
           {/* Column 1: Logo and Mission */}
           <div>
             <div className="text-2xl font-bold font-poppins mb-4">
-              <span>Immigration<span className="text-[#D4AF37]">Pro</span></span>
+              <span>The Visa <span className="text-[#D4AF37]">Guy</span></span>
             </div>
             <p className="text-[#F1F5F9] mb-6 font-lato">
-              Empowering individuals and families to achieve their global immigration dreams with expert guidance and personalized solutions.
+              Trusted Visa Services in UAE. The Visa Guy is a trusted visa service in Dubai that provides global visa assistance to citizens and residents in the UAE.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-[#F1F5F9] hover:text-[#D4AF37] transition-colors">
@@ -74,7 +74,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold font-poppins mb-4 text-[#D4AF37]">Quick Links</h3>
             <ul className="space-y-3">
-              {['Home', 'Services', 'Success Stories', 'About Us', 'Contact', 'FAQ'].map((link) => (
+              {['Home', 'Countries', 'Services', 'Success Stories', 'Booking Free Consultation', 'FAQ'].map((link) => (
                 <li key={link}>
                   <a 
                     href={`#${link.toLowerCase().replace(' ', '-')}`} 
@@ -95,26 +95,26 @@ const Footer = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 mt-0.5 text-[#D4AF37]" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
-                <span>123 Immigration Street, Toronto, ON M5V 2T6</span>
+                <span>Dubai Marina, Dubai, UAE</span>
               </li>
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 text-[#D4AF37]" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
-                <span>+1 (416) 555-1234</span>
+                <span>+971 50 123 4567</span>
               </li>
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 text-[#D4AF37]" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
-                <span>info@immigrationpro.com</span>
+                <span>info@thevisaguy.ae</span>
               </li>
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 text-[#D4AF37]" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                 </svg>
-                <span>Mon-Fri: 9AM - 6PM</span>
+                <span>Sat-Thu: 9AM - 8PM</span>
               </li>
             </ul>
           </div>
@@ -123,7 +123,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold font-poppins mb-4 text-[#D4AF37]">Stay Updated</h3>
             <p className="text-[#F1F5F9] mb-4 font-lato">
-              Subscribe to our newsletter for immigration news and updates.
+              Subscribe to our newsletter for visa news and updates from The Visa Guy.
             </p>
             <form className="space-y-3">
               <input
@@ -146,7 +146,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-[#1a3d6b] mt-12 pt-8 text-center">
           <p className="text-[#94a3b8] font-lato">
-            © {new Date().getFullYear()} ImmigrationPro. All rights reserved.
+            © {new Date().getFullYear()} The Visa Guy. All rights reserved. | Trusted Visa Services in UAE
           </p>
         </div>
       </div>
