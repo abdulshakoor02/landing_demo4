@@ -3,15 +3,19 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  onBookConsultation?: () => void;
+}
+
+const HeroSection = ({ onBookConsultation }: HeroSectionProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Split headline into words for animation
   const headlineWords = "Visa Simplified.".split(" ");
-  
+
   // Subheadline
   const subHeadline = "Navigating the visa application process can be complex and time-consuming. But don't worry, we're here to help! At The Visa Guy, we specialize in making visa applications stress-free.";
-  
+
   // Social proof text
   const socialProof = "75+ countries • Fast & flexible • Secure";
 
@@ -26,7 +30,7 @@ const HeroSection = () => {
         }
       }
     };
-    
+
     playVideo();
   }, []);
 
@@ -105,11 +109,12 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Apply now with 25% off"
+            onClick={onBookConsultation}
           >
             Apply Now
             <span className="ml-2 bg-[#0D2F5B] text-white text-xs px-2 py-1 rounded-full">25% OFF</span>
           </motion.button>
-          
+
           <motion.button
             className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-poppins font-semibold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors duration-300"
             initial={{ opacity: 0, y: 20 }}
@@ -118,10 +123,11 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Book free consultation"
+            onClick={onBookConsultation}
           >
             Book Free Consultation
           </motion.button>
-          
+
           <motion.button
             className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-poppins font-semibold text-lg px-8 py-4 rounded-full hover:bg-white/20 transition-colors duration-300"
             initial={{ opacity: 0, y: 20 }}
@@ -145,11 +151,11 @@ const HeroSection = () => {
           aria-label="Scroll down to explore"
         >
           <span className="text-white text-sm mb-2 font-lato sr-only">Scroll to explore</span>
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6 text-white" 
-            fill="none" 
-            viewBox="0 0 24 24" 
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
             stroke="currentColor"
             aria-hidden="true"
           >

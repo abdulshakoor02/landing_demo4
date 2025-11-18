@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const Header = () => {
+interface HeaderProps {
+  onBookConsultation?: () => void;
+}
+
+const Header = ({ onBookConsultation }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -11,7 +15,7 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -20,11 +24,10 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-[#0D2F5B]/80 backdrop-blur-md' 
+      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-[#0D2F5B]/80 backdrop-blur-md'
           : 'bg-transparent'
-      }`}
+        }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -57,6 +60,7 @@ const Header = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Book a consultation with our experts"
+          onClick={onBookConsultation}
         >
           Book a Consultation
         </motion.button>
@@ -110,6 +114,10 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Book a consultation with our experts"
+              onClick={() => {
+                setIsMenuOpen(false);
+                if (onBookConsultation) onBookConsultation();
+              }}
             >
               Book a Consultation
             </motion.button>

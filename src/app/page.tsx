@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import useScrollProgress from '@/hooks/useScrollProgress';
 
@@ -16,51 +17,65 @@ const FAQSection = dynamic(() => import('@/components/FAQSection'), { ssr: true 
 const FinalCTASection = dynamic(() => import('@/components/FinalCTASection'), { ssr: true });
 const Footer = dynamic(() => import('@/components/Footer'), { ssr: true });
 const CustomCursor = dynamic(() => import('@/components/CustomCursor'), { ssr: false });
+const ContactModal = dynamic(() => import('@/components/ContactModal'), { ssr: false });
 
 export default function Home() {
   const scrollProgress = useScrollProgress();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Open modal after 2 seconds
+    const timer = setTimeout(() => {
+      setIsModalOpen(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
       {/* Scroll Progress Indicator */}
-      <div 
+      <div
         className="fixed top-0 left-0 h-1 bg-[#D4AF37] z-50 transition-all duration-300"
         style={{ width: `${scrollProgress}%` }}
       />
-      
+
       {/* Custom Cursor */}
       <CustomCursor />
-      
+
+      {/* Contact Modal */}
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
       {/* Header */}
-      <Header />
-      
+      <Header onBookConsultation={() => setIsModalOpen(true)} />
+
       {/* Hero Section */}
-      <HeroSection />
-      
+      <HeroSection onBookConsultation={() => setIsModalOpen(true)} />
+
       {/* About Section */}
-      <AboutSection />
-      
+      <AboutSection onBookConsultation={() => setIsModalOpen(true)} />
+
       {/* Partners Marquee */}
       <PartnersMarquee />
-      
+
       {/* Services Section */}
       <ServicesSection />
-      
+
       {/* Success Stories Section */}
       <SuccessStoriesSection />
-      
+
       {/* Testimonials Section */}
       <TestimonialsSection />
-      
+
       {/* Countries Section */}
       <CountriesSection />
-      
+
       {/* FAQ Section */}
       <FAQSection />
-      
+
       {/* Final CTA Section */}
-      <FinalCTASection />
-      
+      <FinalCTASection onBookConsultation={() => setIsModalOpen(true)} />
+
       {/* Footer */}
       <Footer />
     </div>

@@ -2,7 +2,11 @@
 
 import { motion } from 'framer-motion';
 
-const AboutSection = () => {
+interface AboutSectionProps {
+  onBookConsultation?: () => void;
+}
+
+const AboutSection = ({ onBookConsultation }: AboutSectionProps) => {
   return (
     <section className="py-20 bg-gradient-to-br from-[#F8FAFC] to-[#F1F5F9]" id="about">
       <div className="container mx-auto px-4">
@@ -31,7 +35,7 @@ const AboutSection = () => {
             <p className="text-lg text-[#475569] font-lato leading-relaxed">
               <span className="text-[#0D2F5B] font-semibold">The Visa Guy</span> is a trusted visa service in Dubai that provides global visa assistance to citizens and residents in the UAE. With Visa Guy, you can find answers to your visa questions and ensure you get the most value for your money in your visa application process.
             </p>
-            
+
             <p className="text-lg text-[#475569] font-lato leading-relaxed">
               Operating from Dubai and Abu Dhabi, we specialize in making visa applications stress-free for UAE residents. Our door-step service delivers exceptional visa assistance right to your location, preparing documents and handling submissions with professional expertise.
             </p>
@@ -94,7 +98,10 @@ const AboutSection = () => {
                 Our mission is to simplify the visa application process for UAE residents, whether you're traveling for tourism, business, or family visits. We handle the complexities so you can focus on planning your journey.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-[#D4AF37] text-[#0D2F5B] font-poppins font-semibold px-6 py-3 rounded-full hover:bg-[#c0a030] transition-colors duration-300">
+                <button
+                  className="bg-[#D4AF37] text-[#0D2F5B] font-poppins font-semibold px-6 py-3 rounded-full hover:bg-[#c0a030] transition-colors duration-300"
+                  onClick={onBookConsultation}
+                >
                   Book Free Consultation
                 </button>
                 <button className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-poppins font-semibold px-6 py-3 rounded-full hover:bg-white/20 transition-colors duration-300">
