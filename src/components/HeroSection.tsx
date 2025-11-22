@@ -14,7 +14,7 @@ const HeroSection = ({ onBookConsultation }: HeroSectionProps) => {
   const headlineWords = "Visa Simplified.".split(" ");
 
   // Subheadline
-  const subHeadline = "Navigating the visa application process can be complex and time-consuming. But don't worry, we're here to help! At The Visa Guy, we specialize in making visa applications stress-free.";
+  const subHeadline = "Navigating the visa application process can be complex and time-consuming. But don't worry, we're here to help! At vxglobal, we specialize in making visa applications stress-free.";
 
   // Social proof text
   const socialProof = "75+ countries • Fast & flexible • Secure";

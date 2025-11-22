@@ -37,7 +37,7 @@ const Header = ({ onBookConsultation }: HeaderProps) => {
         {/* Logo */}
         <div className="text-2xl font-bold text-white">
           {/* Replace with actual logo */}
-          <span className="font-poppins font-semibold">The Visa <span className="text-[#D4AF37]">Guy</span></span>
+          <span className="font-poppins font-semibold">vx<span className="text-[#D4AF37]">global</span></span>
         </div>
 
         {/* Desktop Navigation */}

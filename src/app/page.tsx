@@ -18,6 +18,7 @@ const FinalCTASection = dynamic(() => import('@/components/FinalCTASection'), { 
 const Footer = dynamic(() => import('@/components/Footer'), { ssr: true });
 const CustomCursor = dynamic(() => import('@/components/CustomCursor'), { ssr: false });
 const ContactModal = dynamic(() => import('@/components/ContactModal'), { ssr: false });
+const FloatingActionButtons = dynamic(() => import('@/components/FloatingActionButtons'), { ssr: false });
 
 export default function Home() {
   const scrollProgress = useScrollProgress();
@@ -42,6 +43,9 @@ export default function Home() {
 
       {/* Custom Cursor */}
       <CustomCursor />
+
+      {/* Floating Action Buttons */}
+      <FloatingActionButtons onEnquire={() => setIsModalOpen(true)} />
 
       {/* Contact Modal */}
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

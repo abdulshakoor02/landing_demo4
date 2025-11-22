@@ -19,7 +19,7 @@ const AboutSection = ({ onBookConsultation }: AboutSectionProps) => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-[#0D2F5B] mb-6">
-              About <span className="text-[#D4AF37]">The Visa Guy</span>
+              About <span className="text-[#D4AF37]">vxglobal</span>
             </h2>
             <div className="w-24 h-1 bg-[#D4AF37] mx-auto mb-8"></div>
           </motion.div>
@@ -33,7 +33,7 @@ const AboutSection = ({ onBookConsultation }: AboutSectionProps) => {
             className="space-y-6"
           >
             <p className="text-lg text-[#475569] font-lato leading-relaxed">
-              <span className="text-[#0D2F5B] font-semibold">The Visa Guy</span> is a trusted visa service in Dubai that provides global visa assistance to citizens and residents in the UAE. With Visa Guy, you can find answers to your visa questions and ensure you get the most value for your money in your visa application process.
+              <span className="text-[#0D2F5B] font-semibold">vxglobal</span> is a trusted visa service in Dubai that provides global visa assistance to citizens and residents in the UAE. With vxglobal, you can find answers to your visa questions and ensure you get the most value for your money in your visa application process.
             </p>
 
             <p className="text-lg text-[#475569] font-lato leading-relaxed">

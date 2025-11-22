@@ -34,7 +34,7 @@ const FinalCTASection = ({ onBookConsultation }: FinalCTASectionProps) => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            From Dubai to the world, The Visa Guy makes visa applications simple and stress-free. Book your free consultation today!
+            From Dubai to the world, vxglobal makes visa applications simple and stress-free. Book your free consultation today!
           </motion.p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

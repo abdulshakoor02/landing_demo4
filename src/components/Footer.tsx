@@ -43,10 +43,10 @@ const Footer = () => {
           {/* Column 1: Logo and Mission */}
           <div>
             <div className="text-2xl font-bold font-poppins mb-4">
-              <span>The Visa <span className="text-[#D4AF37]">Guy</span></span>
+              <span>vxglobal</span>
             </div>
             <p className="text-[#F1F5F9] mb-6 font-lato">
-              Trusted Visa Services in UAE. The Visa Guy is a trusted visa service in Dubai that provides global visa assistance to citizens and residents in the UAE.
+              Trusted Visa Services in UAE. vxglobal is a trusted visa service in Dubai that provides global visa assistance to citizens and residents in the UAE.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-[#F1F5F9] hover:text-[#D4AF37] transition-colors">
@@ -108,7 +108,7 @@ const Footer = () => {
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
-                <span>info@thevisaguy.ae</span>
+                <span>info@vxglobal.ae</span>
               </li>
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 text-[#D4AF37]" viewBox="0 0 20 20" fill="currentColor">
@@ -123,7 +123,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold font-poppins mb-4 text-[#D4AF37]">Stay Updated</h3>
             <p className="text-[#F1F5F9] mb-4 font-lato">
-              Subscribe to our newsletter for visa news and updates from The Visa Guy.
+              Subscribe to our newsletter for visa news and updates from vxglobal.
             </p>
             <form className="space-y-3">
               <input
@@ -146,7 +146,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-[#1a3d6b] mt-12 pt-8 text-center">
           <p className="text-[#94a3b8] font-lato">
-            © {new Date().getFullYear()} The Visa Guy. All rights reserved. | Trusted Visa Services in UAE
+            © {new Date().getFullYear()} vxglobal. All rights reserved. | Trusted Visa Services in UAE
           </p>
         </div>
       </div>

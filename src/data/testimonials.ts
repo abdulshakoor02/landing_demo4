@@ -12,7 +12,7 @@ export const testimonialsData: Testimonial[] = [
     id: 1,
     name: 'Ahmed Al-Mansoori',
     location: 'Dubai, UAE',
-    quote: 'The Visa Guy made my Turkey visa application seamless from Dubai! The door-step service saved me so much time and effort.',
+    quote: 'vxglobal made my Turkey visa application seamless from Dubai! The door-step service saved me so much time and effort.',
     rating: 5,
     image: '/images/testimonials/ahmed-mansoori.jpg',
   },

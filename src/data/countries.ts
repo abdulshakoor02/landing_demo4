@@ -43,7 +43,7 @@ export const countriesData: Country[] = [
     overlayPosition: 'bottom-left',
     animationDelay: 0,
     testimonial: {
-      quote: 'Turkey visa through The Visa Guy was incredibly fast and seamless!',
+      quote: 'Turkey visa through vxglobal was incredibly fast and seamless!',
       author: 'Ahmed Al-Mansoori',
       position: 'Tourist from Dubai'
     }

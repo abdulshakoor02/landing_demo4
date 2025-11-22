@@ -38,7 +38,7 @@ const TestimonialsSection = () => {
             What Our Clients Say
           </h2>
           <p className="text-xl text-[#64748B] max-w-2xl mx-auto font-lato">
-            Hear from UAE residents who have successfully received their visas with The Visa Guy's door-step service
+            Hear from UAE residents who have successfully received their visas with vxglobal's door-step service
           </p>
         </div>
 

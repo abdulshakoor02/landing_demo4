@@ -7,8 +7,8 @@ export interface FAQ {
 export const faqsData: FAQ[] = [
   {
     id: 1,
-    question: 'How does The Visa Guy simplify visa applications from UAE?',
-    answer: 'The Visa Guy offers door-step service, free consultation, and expert guidance throughout your visa application process. We handle document preparation, submission, and follow-ups from Dubai and Abu Dhabi, making visa applications stress-free for UAE residents.'
+    question: 'How does vxglobal simplify visa applications from UAE?',
+    answer: 'vxglobal offers door-step service, free consultation, and expert guidance throughout your visa application process. We handle document preparation, submission, and follow-ups from Dubai and Abu Dhabi, making visa applications stress-free for UAE residents.'
   },
   {
     id: 2,
