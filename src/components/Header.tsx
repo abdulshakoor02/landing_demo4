@@ -20,7 +20,7 @@ const Header = ({ onBookConsultation }: HeaderProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Home', 'Countries', 'Services', 'Success Stories', 'FAQ', 'Contact'];
+  const navItems = ['Home', 'Countries', 'Services',  'FAQ', 'Contact'];
 
   return (
     <motion.header
