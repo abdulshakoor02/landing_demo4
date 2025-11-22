@@ -8,10 +8,10 @@ import useScrollProgress from '@/hooks/useScrollProgress';
 const Header = dynamic(() => import('@/components/Header'), { ssr: true });
 const HeroSection = dynamic(() => import('@/components/HeroSection'), { ssr: true });
 const AboutSection = dynamic(() => import('@/components/AboutSection'), { ssr: true });
-const PartnersMarquee = dynamic(() => import('@/components/PartnersMarquee'), { ssr: true });
+// const PartnersMarquee = dynamic(() => import('@/components/PartnersMarquee'), { ssr: true });
 const ServicesSection = dynamic(() => import('@/components/ServicesSection'), { ssr: true });
 const SuccessStoriesSection = dynamic(() => import('@/components/SuccessStoriesSection'), { ssr: true });
-const TestimonialsSection = dynamic(() => import('@/components/TestimonialsSection'), { ssr: true });
+// const TestimonialsSection = dynamic(() => import('@/components/TestimonialsSection'), { ssr: true });
 const CountriesSection = dynamic(() => import('@/components/CountriesSection'), { ssr: true });
 const FAQSection = dynamic(() => import('@/components/FAQSection'), { ssr: true });
 const FinalCTASection = dynamic(() => import('@/components/FinalCTASection'), { ssr: true });
@@ -60,7 +60,7 @@ export default function Home() {
       <AboutSection onBookConsultation={() => setIsModalOpen(true)} />
 
       {/* Partners Marquee */}
-      <PartnersMarquee />
+      {/* <PartnersMarquee /> */}
 
       {/* Services Section */}
       <ServicesSection />
@@ -69,7 +69,7 @@ export default function Home() {
       <SuccessStoriesSection />
 
       {/* Testimonials Section */}
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
 
       {/* Countries Section */}
       <CountriesSection />
