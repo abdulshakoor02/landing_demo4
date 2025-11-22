@@ -9,12 +9,12 @@ const Footer = () => {
   return (
     <footer className="bg-[#0D2F5B] text-white">
       {/* Scrolling Marquee */}
-      <div 
+      <div
         className="py-4 overflow-hidden bg-[#0a2547]"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div 
+        <div
           className={`flex whitespace-nowrap ${isHovered ? '[animation-play-state:paused]' : ''}`}
           style={{
             width: 'fit-content',
@@ -27,7 +27,7 @@ const Footer = () => {
               Visa Simplified • Door-Step Service • 75+ Countries • Free Consultation •
             </span>
           </div>
-          
+
           {/* Duplicate set for seamless loop */}
           <div className="flex items-center mx-8">
             <span className="text-2xl font-bold font-poppins text-[#D4AF37]">
@@ -74,10 +74,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold font-poppins mb-4 text-[#D4AF37]">Quick Links</h3>
             <ul className="space-y-3">
-              {['Home', 'Countries', 'Services', 'Success Stories', 'Booking Free Consultation', 'FAQ'].map((link) => (
+              {['Home', 'Countries', 'Services', 'Booking Free Consultation', 'FAQ'].map((link) => (
                 <li key={link}>
-                  <a 
-                    href={`#${link.toLowerCase().replace(' ', '-')}`} 
+                  <a
+                    href={`#${link.toLowerCase().replace(' ', '-')}`}
                     className="text-[#F1F5F9] hover:text-[#D4AF37] transition-colors font-lato"
                   >
                     {link}
