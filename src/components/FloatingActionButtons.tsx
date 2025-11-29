@@ -13,7 +13,7 @@ const FloatingActionButtons = ({ onEnquire }: FloatingActionButtonsProps) => {
             <div className="fixed left-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4">
                 {/* WhatsApp Button */}
                 <motion.a
-                    href="https://wa.me/1234567890" // Replace with actual number
+                    href="https://wa.me/00971564713394" // Replace with actual number
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:bg-[#20bd5a] transition-colors flex items-center justify-center w-12 h-12 md:w-14 md:h-14"
@@ -31,7 +31,7 @@ const FloatingActionButtons = ({ onEnquire }: FloatingActionButtonsProps) => {
 
                 {/* Phone Button */}
                 <motion.a
-                    href="tel:+971501234567" // Replace with actual number
+                    href="tel:+971564713394" // Replace with actual number
                     className="bg-[#3B82F6] text-white p-3 rounded-full shadow-lg hover:bg-[#2563EB] transition-colors flex items-center justify-center w-12 h-12 md:w-14 md:h-14"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}

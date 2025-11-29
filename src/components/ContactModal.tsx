@@ -10,10 +10,59 @@ interface ContactModalProps {
 
 const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   const [mounted, setMounted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitMessage('Thank you! Your message has been sent successfully.');
+        setFormData({ name: '', email: '', mobile: '', message: '' });
+        setTimeout(() => {
+          onClose();
+          setSubmitMessage('');
+        }, 2000);
+      } else {
+        setSubmitMessage(data.error || 'Failed to send message. Please try again.');
+      }
+    } catch {
+      setSubmitMessage('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   if (!mounted) return null;
 
@@ -63,15 +112,19 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
                 {/* Form */}
                 <div className="p-6 md:p-8">
-                  <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onClose(); alert('Thank you! We will contact you soon.'); }}>
+                  <form className="space-y-4" onSubmit={handleSubmit}>
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1 font-lato">Full Name</label>
                       <input
                         type="text"
                         id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0D2F5B] focus:border-transparent outline-none transition-all font-lato text-gray-900 placeholder-gray-400"
                         placeholder="John Doe"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
 
@@ -80,9 +133,27 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                       <input
                         type="email"
                         id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0D2F5B] focus:border-transparent outline-none transition-all font-lato text-gray-900 placeholder-gray-400"
                         placeholder="john@example.com"
                         required
+                        disabled={isSubmitting}
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1 font-lato">Mobile Number</label>
+                      <input
+                        type="tel"
+                        id="mobile"
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0D2F5B] focus:border-transparent outline-none transition-all font-lato text-gray-900 placeholder-gray-400"
+                        placeholder="+971 (555) 123-4567"
+                        disabled={isSubmitting}
                       />
                     </div>
 
@@ -90,20 +161,39 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                       <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1 font-lato">Message</label>
                       <textarea
                         id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         rows={3}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0D2F5B] focus:border-transparent outline-none transition-all font-lato text-gray-900 placeholder-gray-400 resize-none"
                         placeholder="How can we help you?"
                         required
+                        disabled={isSubmitting}
                       ></textarea>
                     </div>
 
+                    {submitMessage && (
+                      <div className={`p-3 rounded-lg text-sm text-center ${
+                        submitMessage.includes('successfully') 
+                          ? 'bg-green-50 text-green-700 border border-green-200' 
+                          : 'bg-red-50 text-red-700 border border-red-200'
+                      }`}>
+                        {submitMessage}
+                      </div>
+                    )}
+
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                      whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                       type="submit"
-                      className="w-full bg-[#D4AF37] text-[#0D2F5B] font-bold py-3 px-6 rounded-lg shadow-md hover:bg-[#c0a030] transition-colors duration-300 font-poppins mt-2"
+                      disabled={isSubmitting}
+                      className={`w-full font-bold py-3 px-6 rounded-lg shadow-md transition-colors duration-300 font-poppins mt-2 ${
+                        isSubmitting 
+                          ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                          : 'bg-[#D4AF37] text-[#0D2F5B] hover:bg-[#c0a030]'
+                      }`}
                     >
-                      Send Message
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </motion.button>
                   </form>
 
