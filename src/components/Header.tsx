@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface HeaderProps {
   onBookConsultation?: () => void;
@@ -20,7 +21,14 @@ const Header = ({ onBookConsultation }: HeaderProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Home', 'Countries', 'Services',  'FAQ', 'Contact'];
+  const navItems = [
+    { label: 'Home', href: '#home', isPage: false },
+    { label: 'Countries', href: '#countries', isPage: false },
+    { label: 'Services', href: '#services', isPage: false },
+    { label: 'FAQ', href: '#faq', isPage: false },
+    { label: 'Contact', href: '#contact', isPage: false },
+    { label: 'Privacy Policy', href: '/privacy-policy', isPage: true },
+  ];
 
   return (
     <motion.header
@@ -43,14 +51,25 @@ const Header = ({ onBookConsultation }: HeaderProps) => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
           {navItems.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase().replace(' ', '-')}`}
-              className="text-white hover:text-[#D4AF37] transition-colors duration-300 font-lato"
-              aria-label={`Go to ${item} section`}
-            >
-              {item}
-            </a>
+            item.isPage ? (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-white hover:text-[#D4AF37] transition-colors duration-300 font-lato"
+                aria-label={`Go to ${item.label}`}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-white hover:text-[#D4AF37] transition-colors duration-300 font-lato"
+                aria-label={`Go to ${item.label} section`}
+              >
+                {item.label}
+              </a>
+            )
           ))}
         </nav>
 
@@ -99,15 +118,27 @@ const Header = ({ onBookConsultation }: HeaderProps) => {
         >
           <nav className="flex flex-col space-y-4">
             {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
-                className="text-white hover:text-[#D4AF37] transition-colors duration-300 font-lato py-2"
-                onClick={() => setIsMenuOpen(false)}
-                aria-label={`Go to ${item} section`}
-              >
-                {item}
-              </a>
+              item.isPage ? (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-white hover:text-[#D4AF37] transition-colors duration-300 font-lato py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                  aria-label={`Go to ${item.label}`}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-white hover:text-[#D4AF37] transition-colors duration-300 font-lato py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                  aria-label={`Go to ${item.label} section`}
+                >
+                  {item.label}
+                </a>
+              )
             ))}
             <motion.button
               className="bg-[#D4AF37] text-[#0D2F5B] font-poppins font-semibold px-6 py-2 rounded-full hover:bg-[#c0a030] transition-colors duration-300 mt-4 w-full"
