@@ -29,6 +29,9 @@ export const metadata: Metadata = {
   title: "vxglobal – UAE Visa Assistance for 75+ Countries",
   description: "Trusted visa services in Dubai and Abu Dhabi. Door-step visa assistance for 75+ countries. Free consultation, 25% off applications, stress-free visa processing from UAE.",
   keywords: "visa services Dubai, UAE visa assistance, Schengen visa, Turkey visa, visa consultant Dubai, door-step service, business visa, tourist visa",
+  other: {
+    "facebook-domain-verification": "9iqddf4kiy4f37qyyjkzllzg9gqazj",
+  },
 };
 
 export default function RootLayout({
